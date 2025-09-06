@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtualización y Hardware</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .slide {
+      background: #fff;
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .description {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .diagram {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .box {
+      margin: 5px auto;
+      padding: 10px 20px;
+      width: 320px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .vm { background-color: #3498db; }
+    .hypervisor { background-color: #9b59b6; }
+    .hardware { background-color: #2ecc71; }
+
+    .resources {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .resource {
+      flex: 1 1 calc(50% - 20px);
+      background-color: #ecf0f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .resource h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    @media (max-width: 768px) {
+      .resources {
+        flex-direction: column;
+      }
+
+      .resource {
+        flex: 1 1 100%;
+      }
+
+      .box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>Relación entre Hardware y Virtualización</h1>
+
+    <div class="description">
+      <p>La <strong>virtualización</strong> permite que múltiples sistemas operativos funcionen sobre un solo equipo físico, compartiendo recursos como <strong>CPU</strong>, <strong>RAM</strong>, <strong>Disco</strong> y <strong>GPU</strong>. Esto se logra mediante un software llamado <em>hypervisor</em>, que actúa como intermediario entre el hardware y las máquinas virtuales.</p>
+    </div>
+
+    <div class="diagram">
+      <div class="box vm">Máquina Virtual 1 (VM1)</div>
+      <div class="box vm">Máquina Virtual 2 (VM2)</div>
+      <div class="box vm">Máquina Virtual 3 (VM3)</div>
+      <div class="box hypervisor">Hypervisor (VirtualBox, VMware, KVM...)</div>
+      <div class="box hardware">Hardware Físico: CPU | RAM | Disco | GPU</div>
+    </div>
+
+    <div class="resources">
+      <div class="resource">
+        <h3>🧠 CPU</h3>
+        <p>El procesador se comparte entre varias máquinas virtuales, asignando núcleos o hilos según demanda.</p>
+      </div>
+      <div class="resource">
+        <h3>💾 RAM</h3>
+        <p>Cada VM recibe una porción de memoria, pero el hypervisor puede gestionar el uso dinámicamente.</p>
+      </div>
+      <div class="resource">
+        <h3>📀 Disco</h3>
+        <p>Las VMs usan discos virtuales, que son archivos en el mismo disco físico del host.</p>
+      </div>
+      <div class="resource">
+        <h3>🎮 GPU</h3>
+        <p>La tarjeta gráfica puede compartirse entre VMs o asignarse a una específica (GPU passthrough).</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
